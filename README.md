@@ -95,3 +95,7 @@ Provides the [Command](Is/Command.html) class.
 
 * [is-command-0.8.1](https://rubygems.org/gems/is-command) @
 [RubyGems.org](https://rubygems.org/)
+
+### ToDo
+
+Console help automaker like the OptionParser.
