@@ -1,0 +1,6 @@
+--no-cache
+--private
+--protected
+--hide-void-return
+--title 'Ruby Gems by Ivan Shikhalev'
+lib/**/*.rb
