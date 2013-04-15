@@ -4,7 +4,7 @@ module Is
 
   class Command
 
-    VERSION = '0.8.0'
+    VERSION = '0.8.1'
 
     module Mixin
 
@@ -190,11 +190,7 @@ module Is
 
       # @return [Object, nil]
       def run
-        if @name
-          process @name.to_s, *ARGV
-        else
-          process *ARGV
-        end
+        process *ARGV
       end
 
     end
@@ -205,7 +201,7 @@ module Is
       # @param [Array<String>] description
       # @yield
       # @return [Object, nil]
-      def application name = nil, *description, &block
+      def runapp name = nil, *description, &block
         app = Command::Application.new name, *description, &block
         app.run
       end
