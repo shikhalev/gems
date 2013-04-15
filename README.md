@@ -99,3 +99,12 @@ Provides the [Command](Is/Command.html) class.
 ### ToDo
 
 Console help automaker like the OptionParser.
+
+## “Lazy” Gem
+
+Provides an object-placeholder for lazy and threaded calculations.
+
+See the [Lazy](Is/Lazy.html) module.
+
+### Links
+
