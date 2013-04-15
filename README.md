@@ -108,3 +108,5 @@ See the [Lazy](Is/Lazy.html) module.
 
 ### Links
 
+* [is-lazy-0.9.0](https://rubygems.org/gems/is-lazy) @
+[RubyGems.org](https://rubygems.org/)
