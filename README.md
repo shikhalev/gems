@@ -6,6 +6,8 @@
 * [Project](https://github.com/shikhalev/gems) @ [GitHub](https://github.com/)
 * [Tracker](https://github.com/shikhalev/gems/issues) &
 [Wiki](https://github.com/shikhalev/gems/wiki) @ [GitHub](https://github.com/)
+* [Documentation](http://rubydoc.info/github/shikhalev/gems/master/frames)
+@ [RubyDoc.info](http://rubydoc.info/)
 
 ## “Command” Gem
 
