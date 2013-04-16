@@ -4,3 +4,4 @@
 --hide-void-return
 --title 'Ruby Gems by Ivan Shikhalev'
 lib/**/*.rb
+- README.md LICENSE.md

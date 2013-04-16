@@ -1,7 +1,14 @@
 
 # Ruby Gems by Ivan Shikhalev
 
-## Links
+## Overview
+
+### License
+
+This code is distributed under the
+[GNU General Public License](file.LICENSE.html).
+
+### Links
 
 * [Project](https://github.com/shikhalev/gems) @ [GitHub](https://github.com/)
 * [Tracker](https://github.com/shikhalev/gems/issues) &
