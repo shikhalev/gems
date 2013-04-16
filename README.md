@@ -6,7 +6,7 @@
 ### License
 
 This code is distributed under the
-[GNU General Public License](file.LICENSE.html).
+{file:LICENSE.md GNU General Public License}
 
 ### Links
 
