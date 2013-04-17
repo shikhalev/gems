@@ -20,7 +20,7 @@ This code is distributed under the
 
 This is helper for creating multi-command apps (like Git, for example).
 
-Provides the [Command](Is/Command.html) class.
+Provides the {Is::Command} class.
 
 ### Usage example
 
@@ -119,7 +119,7 @@ Console help automaker like the OptionParser.
 
 Provides an object-placeholder for lazy and threaded calculations.
 
-See the [Lazy](Is/Lazy.html) module.
+See the {Is::Lazy} module.
 
 ### Links
 
