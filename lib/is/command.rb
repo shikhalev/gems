@@ -8,6 +8,22 @@ module Is
 
     module Mixin
 
+      @@messages = {
+        :commands => 'Commands',
+        :actions => 'Actions',
+        :aliases => 'Aliases',
+        :commons => 'Common options',
+        :options => 'Options'
+      }
+
+      class << self
+
+        def messages values = {}
+          @@messages.merge! values
+        end
+
+      end
+
       # @return [Symbol, nil]
       attr_reader :name
 
@@ -164,6 +180,109 @@ module Is
         else
           raise 'Invalid command line.'
         end
+      end
+
+      def fullname
+        if @up && @up.respond_to?(:fullname)
+          @up.fullname + ' ' + @name.to_s
+        else
+          @name.to_s
+        end
+      end
+
+      def help opts = {}
+        h = opts[:highlight] || opts[:color]
+        hl = opts[:marker] || "\e[1m"
+        hr = ''
+        case h
+        when true, :true, :TRUE, :yes, :YES
+          hr = "\e[0m;"
+        when false, :false, :FALSE, :no, :NO
+          hl = ''
+        when nil, :auto, :AUTO
+          if $stdout.stat.chardev?
+            hr = "\e[0m"
+          else
+            hl = ''
+          end
+        else
+          hl = h
+          hr = "\e[0m"
+        end
+        cc = {}
+        aa = {}
+        ss = {}
+        @actions.each do |k, v|
+          case v
+          when Command
+            cc[k] = v
+          when Hash
+            aa[k] = v
+          else
+            ss[k] = v
+          end
+        end
+        mm = ! opts[:nocommons] && commons || []
+        kk = @keys || []
+        result = ''
+        result << "#{hl}#{fullname}#{hr}\n"
+        result << "\t#{@description.join("\n\t")}\n"
+        result << "\n"
+        if ! cc.empty?
+          result << "#{hl}#{@@messages[:commands]}:#{hr}\n"
+          cc.each do |k, v|
+            result << "\t#{k}\n"
+          end
+          result << "\n"
+        end
+        if ! aa.empty?
+          result << "#{hl}#{@@messages[:actions]}:#{hr}\n"
+          aa.each do |k, v|
+            result << "\t#{k}\n"
+          end
+          result << "\n"
+        end
+        if ! ss.empty?
+          result << "#{hl}#{@@messages[:aliases]}:#{hr}\n"
+          aa.each do |k, v|
+            if Array === v
+              value = v.join ' '
+            else
+              value = v.to_s
+            end
+            result << "\t#{k} = #{value}\n"
+          end
+          result << "\n"
+        end
+        if ! mm.empty?
+          result << "#{hl}#{@@messages[:commons]}:#{hr}\n"
+          o = OptionParser.new
+          mm.each do |k|
+            o.on *k[:defs]
+          end
+          result << "#{o.to_s}\n"
+          result << "\n"
+        end
+        if ! kk.empty?
+          result << "#{hl}#{@@messages[:options]}:#{hr}\n"
+          o = OptionParser.new
+          kk.each do |k|
+            o.on *k[:defs]
+          end
+          result << "#{o.to_s}\n"
+          result << "\n"
+        end
+        aa.each do |k, v|
+          result << "#{hl}#{fullname} #{k}#{hr}\n"
+          result << "\t#{v[:description].join("\n\t")}\n"
+          result << "\n"
+        end
+        cc.each do |k, v|
+          result << v.help(:nocommons => true)
+        end
+        result << "\n"
+        GC.start
+        result
       end
 
       # @return [Proc]
