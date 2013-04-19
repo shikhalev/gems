@@ -6,7 +6,7 @@ module Is
 
   class Command
 
-    VERSION = '0.9.0'
+    VERSION = '0.9.1'
 
     module Mixin
 
@@ -20,6 +20,8 @@ module Is
 
       class << self
 
+        # @param [Hash] values
+        # @return [Hash]
         def messages values = {}
           @@messages.merge! values
         end
@@ -184,6 +186,7 @@ module Is
         end
       end
 
+      # @return [String, nil]
       def fullname
         if @up && @up.respond_to?(:fullname)
           @up.fullname + ' ' + @name.to_s
@@ -192,6 +195,11 @@ module Is
         end
       end
 
+      # @param [Hash] opts
+      # @option opts [Boolean, String, :auto] :highlight
+      # @option opts [Boolean, String, :auto] :color
+      # @option opts [String] :marker
+      # @return [String]
       def help opts = {}
         h = opts[:highlight] || opts[:color]
         hl = opts[:marker] || "\e[1m"
