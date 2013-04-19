@@ -1,5 +1,7 @@
 # encoding: utf-8
 
+require 'optparse'
+
 module Is
 
   class Command
@@ -260,8 +262,8 @@ module Is
           mm.each do |k|
             o.on *k[:defs]
           end
-          result << "#{o.to_s}\n"
-          result << "\n"
+          result << "#{o.summarize.join('')}\n"
+          #result << "\n"
         end
         if ! kk.empty?
           result << "#{hl}#{@@messages[:options]}:#{hr}\n"
@@ -269,8 +271,8 @@ module Is
           kk.each do |k|
             o.on *k[:defs]
           end
-          result << "#{o.to_s}\n"
-          result << "\n"
+          result << "#{o.summarize.join('')}\n"
+          #result << "\n"
         end
         aa.each do |k, v|
           result << "#{hl}#{fullname} #{k}#{hr}\n"
@@ -280,7 +282,7 @@ module Is
         cc.each do |k, v|
           result << v.help(:nocommons => true)
         end
-        result << "\n"
+        # result << "\n"
         GC.start
         result
       end
