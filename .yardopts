@@ -2,6 +2,7 @@
 --private
 --protected
 --hide-void-return
+--plugin yard-is-monkey
 --title 'Ruby Gems by Ivan Shikhalev'
 --query="/^@@/ !~ o.name && @api.text != 'ignore'"
 lib/**/*.rb ./*.rb
