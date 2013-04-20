@@ -4,7 +4,7 @@ require './lib/is/lazy'
 
 Gem::Specification.new do |g|
   g.name = 'is-lazy'
-  g.version = Is::Lazy::VERSION
+  g.version = Is::Lazy::VERSION + '.1'
   g.summary = 'Provides an object-placeholder for lazy and threaded calculations'
   g.author = 'Ivan Shikhalev'
   g.email = 'shikhalev@gmail.com'

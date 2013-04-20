@@ -4,7 +4,7 @@ require './lib/is/command'
 
 Gem::Specification.new do |g|
   g.name = 'is-command'
-  g.version = Is::Command::VERSION
+  g.version = Is::Command::VERSION + '.1'
   g.summary = 'Multicommand apps helper'
   g.author = 'Ivan Shikhalev'
   g.email = 'shikhalev@gmail.com'
