@@ -6,7 +6,7 @@ module Is
 
   class Command
 
-    VERSION = '0.9.1'
+    VERSION = '0.9.2'
 
     module Mixin
 
@@ -232,7 +232,7 @@ module Is
             ss[k] = v
           end
         end
-        mm = ! opts[:nocommons] && commons || []
+        mm = opts[:nocommons] ? @commons : commons or []
         kk = @keys || []
         result = ''
         result << "#{hl}#{fullname}#{hr}\n"
