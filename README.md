@@ -125,3 +125,14 @@ See the {Is::Lazy} module.
 
 * [is-lazy-0.9.0](https://rubygems.org/gems/is-lazy) @
 [RubyGems.org](https://rubygems.org/)
+
+## “Monkey” Gems
+
+Set of the monkey-patches.
+
+See the {Module}, {Object} etc.
+
+### Links
+
+* [is-monkey-0.1.0](https://rubygems.org/gems/is-monkey) @
+[RubyGems.org](https://rubygems.org/)
