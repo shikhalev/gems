@@ -26,8 +26,8 @@ class Module
     valnull = opts[:null]
     args.each do |a|
       getter = a.intern
-      variable = "@#{p}".intern
-      setter = "#{p}=".intern
+      variable = "@#{getter}".intern
+      setter = "#{getter}=".intern
 
       get_proc = define_method getter do |*aa|
         if ! instance_variable_defined?(variable)
@@ -40,7 +40,7 @@ class Module
             aa.each do |a|
               value = value.merge a
             end
-          elsif aa.size = 1
+          elsif aa.size == 1
             value = aa[0]
           else
             value = aa
@@ -150,7 +150,7 @@ module Is
     # @param [Object] obj
     # @return [Object, nil]
     def default obj
-      if Class === obj && obj.superclass
+      if Class === obj && obj.superclass && obj.superclass.respond_to?(@name)
         v = obj.superclass.send @name
       else
         v = nil

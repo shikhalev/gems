@@ -4,5 +4,5 @@
 --hide-void-return
 --title 'Ruby Gems by Ivan Shikhalev'
 --query="/^@@/ !~ o.name && @api.text != 'ignore'"
-lib/**/*.rb
+lib/**/*.rb ./*.rb
 - *.md
