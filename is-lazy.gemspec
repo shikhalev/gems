@@ -14,5 +14,6 @@ Gem::Specification.new do |g|
 
   g.files = [ 'lib/is/lazy.rb', '.yardopts' ]
   g.require_path = 'lib'
+  g.required_ruby_version = '>= 1.9.2'
 end
 
