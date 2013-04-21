@@ -32,19 +32,19 @@ class Module
       variable = "@#{getter}".intern
       setter = "#{getter}=".intern
 
-      get_proc = define_method getter do |*aa|
+      get_proc = define_method getter do |*values|
         if ! instance_variable_defined?(variable)
           instance_variable_set variable,
               singleton_class.properties[getter].default(self)
         end
         value = instance_variable_get variable
-        if ! aa.empty?
+        if ! values.empty?
           if value.respond_to? :append!
-            value.append! *aa
-          elsif aa.size == 1
-            value = aa[0]
+            value.append! *values
+          elsif values.size == 1
+            value = values[0]
           else
-            value = aa
+            value = values
           end
           send setter, value
         end
@@ -110,76 +110,76 @@ end
 
 class Array
 
-  # @param [Array] args
+  # @param [Array] values
   # @return [self]
-  def append! *args
-    push *args
+  def append! *values
+    push *values
   end
 
-  # @param [Array] args
+  # @param [Array] values
   # @return [Array]
-  def append *args
-    dup.append! *args
+  def append *values
+    dup.append! *values
   end
 
 end
 
 class Hash
 
-  # @param [Array<Hash>] args
+  # @param [Array<Hash>] values
   # @return [self]
-  def append! *args
-    args.each do |a|
+  def append! *values
+    values.each do |a|
       merge! a
     end
   end
 
-  # @param [Array<Hash>] args
+  # @param [Array<Hash>] values
   # @return [Hash]
-  def append *args
-    dup.append! *args
+  def append *values
+    dup.append! *values
   end
 
 end
 
 class Set
 
-  # @overload append! *args
-  #   @param [Array] args
+  # @overload append! *values
+  #   @param [Array] values
   # @overload append! value
   #   @param [Set] value
   # @return [self]
-  def append! *args
-    if args.size == 1 && Set === args[0]
-      merge args[0]
+  def append! *values
+    if values.size == 1 && Set === values[0]
+      merge values[0]
     else
-      merge args
+      merge values
     end
   end
 
-  # @overload append *args
-  #   @param [Array] args
+  # @overload append *values
+  #   @param [Array] values
   # @overload append value
   #   @param [Set] value
   # @return [Set]
-  def append *args
-    dup.append! *args
+  def append *values
+    dup.append! *values
   end
 
 end
 
 class String
 
-  # @param [Array] args
+  # @param [Array] values
   # @return [self]
-  def append! *args
-    self << ($, + args.join)
+  def append! *values
+    self << ($, + values.join)
   end
 
-  # @param [Array] args
+  # @param [Array] values
   # @return [String]
-  def append *args
-    dup.append! *args
+  def append *values
+    dup.append! *values
   end
 
 end
