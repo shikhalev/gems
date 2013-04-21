@@ -4,7 +4,7 @@ require './lib/yard-is-monkey'
 
 Gem::Specification.new do |g|
   g.name = 'yard-is-monkey'
-  g.version = Is::MonkeyYARD::VERSION
+  g.version = Is::Monkey::YARD::VERSION
   g.summary = 'YARD plugin for use with is-monkey gem'
   g.author = 'Ivan Shikhalev'
   g.email = 'shikhalev@gmail.com'
