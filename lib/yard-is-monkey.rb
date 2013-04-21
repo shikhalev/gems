@@ -19,10 +19,14 @@ module Is
           return if statement.type == :var_ref || statement.type == :vcall
           params = statement.parameters(false).dup
           cls = nil
+          nul = nil
           grp = 'Properties'
           while params[-1].type == :list
-            arg = params.pop.source.scan(/(?::class\s*=>|class:)\s*([\w:]+)/)[0]
-            cls = arg[0] if arg
+            arg = params.pop
+            ccc = arg.source.scan(/(?::class\s*=>|class:)\s*([\w:]+)/)[0]
+            cls = ccc[0] if ccc
+            nnn = arg.source.scan(/(?::null\s*=>|null:)\s*([\w:]+)/)[0]
+            nul = nnn && (nnn != 'nil' && nnn != 'false') ? ', nil' : ''
           end
           validated_attribute_names(params).each do |name|
             namespace.attributes[scope][name] ||= SymbolHash[:read => nil,
@@ -48,7 +52,7 @@ module Is
               o.source = src
               register(o)
               o.docstring = doc if o.docstring.blank?(false)
-              o.docstring += "\n@return [#{cls}]" if cls
+              o.docstring += "\n@return [#{cls}#{nul}]" if cls
               o.group = (scope == :class) ? "Class #{grp}" : "Instance #{grp}"
               namespace.attributes[scope][name][type] = o
             end
