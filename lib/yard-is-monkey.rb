@@ -32,7 +32,8 @@ module Is
               case type
               when :read
                 sgn = "def #{name} *values"
-                src = "#{sgn}\n  @#{name} << *values if ! values.empty? # abstract pseudocode\n  @#{name}\nend"
+                src = "#{sgn}\n  @#{name} << *values if ! values.empty? " +
+                    "# abstract pseudocode\n  @#{name}\nend"
               when :write
                 par = [['value']]
                 sgn = "def @{name}= value"
