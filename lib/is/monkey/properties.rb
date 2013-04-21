@@ -119,7 +119,7 @@ class Array
   # @param [Array] args
   # @return [Array]
   def append *args
-    dup.append *args
+    dup.append! *args
   end
 
 end
@@ -137,7 +137,7 @@ class Hash
   # @param [Array<Hash>] args
   # @return [Hash]
   def append *args
-    dup.append *args
+    dup.append! *args
   end
 
 end
@@ -163,7 +163,7 @@ class Set
   #   @param [Set] value
   # @return [Set]
   def append *args
-    dup.append *args
+    dup.append! *args
   end
 
 end
@@ -179,7 +179,7 @@ class String
   # @param [Array] args
   # @return [String]
   def append *args
-    dup.append *args
+    dup.append! *args
   end
 
 end
