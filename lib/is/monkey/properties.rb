@@ -110,10 +110,14 @@ end
 
 class Array
 
+  # @param [Array] args
+  # @return [self]
   def append! *args
     push *args
   end
 
+  # @param [Array] args
+  # @return [Array]
   def append *args
     dup.append *args
   end
@@ -122,12 +126,16 @@ end
 
 class Hash
 
+  # @param [Array<Hash>] args
+  # @return [self]
   def append! *args
     args.each do |a|
       merge! a
     end
   end
 
+  # @param [Array<Hash>] args
+  # @return [Hash]
   def append *args
     dup.append *args
   end
@@ -136,6 +144,11 @@ end
 
 class Set
 
+  # @overload append! *args
+  #   @param [Array] args
+  # @overload append! value
+  #   @param [Set] value
+  # @return [self]
   def append! *args
     if args.size == 1 && Set === args[0]
       merge args[0]
@@ -144,6 +157,11 @@ class Set
     end
   end
 
+  # @overload append *args
+  #   @param [Array] args
+  # @overload append value
+  #   @param [Set] value
+  # @return [Set]
   def append *args
     dup.append *args
   end
@@ -152,10 +170,14 @@ end
 
 class String
 
+  # @param [Array] args
+  # @return [self]
   def append! *args
     self << ($, + args.join)
   end
 
+  # @param [Array] args
+  # @return [String]
   def append *args
     dup.append *args
   end
