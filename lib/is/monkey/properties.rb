@@ -1,5 +1,8 @@
 # encoding: utf-8
 
+require 'set'
+
+#
 class Module
 
   # @overload property *args, opts = {}
@@ -35,11 +38,9 @@ class Module
               singleton_class.properties[getter].default(self)
         end
         value = instance_variable_get variable
-        if aa.size != 0
-          if value.respond_to? :merge
-            aa.each do |a|
-              value = value.merge a
-            end
+        if ! aa.empty?
+          if value.respond_to? :append!
+            value.append! *aa
           elsif aa.size == 1
             value = aa[0]
           else
@@ -103,6 +104,60 @@ class Object
       end
     end
     result
+  end
+
+end
+
+class Array
+
+  def append! *args
+    push *args
+  end
+
+  def append *args
+    dup.append *args
+  end
+
+end
+
+class Hash
+
+  def append! *args
+    args.each do |a|
+      merge! a
+    end
+  end
+
+  def append *args
+    dup.append *args
+  end
+
+end
+
+class Set
+
+  def append! *args
+    if args.size == 1 && Set === args[0]
+      merge args[0]
+    else
+      merge args
+    end
+  end
+
+  def append *args
+    dup.append *args
+  end
+
+end
+
+class String
+
+  def append! *args
+    self << ($, + args.join)
+  end
+
+  def append *args
+    dup.append *args
   end
 
 end
