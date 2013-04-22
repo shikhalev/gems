@@ -29,6 +29,7 @@ class Module
     valnull = opts[:null]
     args.each do |a|
       getter = a.intern
+      attr_accessor getter
       variable = "@#{getter}".intern
       setter = "#{getter}=".intern
 
