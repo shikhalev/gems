@@ -21,8 +21,8 @@ class Module
   # @return [Boolean]
   def in? other
     ns = self
-    while ns = ns.namespace
-      return true if ns = other
+    while (ns = ns.namespace)
+      return true if ns == other
     end
     return false
   end
