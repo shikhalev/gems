@@ -8,7 +8,7 @@ module Is
 
     module YARD
 
-      VERSION = '0.2.0'
+      VERSION = '0.2.1'
 
       class PropertyHandler < ::YARD::Handlers::Ruby::AttributeHandler
 

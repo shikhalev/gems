@@ -10,7 +10,7 @@ Gem::Specification.new do |g|
   g.email = 'shikhalev@gmail.com'
   g.description = g.summary + '.'
   g.homepage = 'https://github.com/shikhalev/gems/'
-  g.license = 'GNU GPL'
+  g.license = 'GNU LGPL'
 
   g.files = [ 'lib/yard-is-monkey.rb', '.yardopts' ]
   g.require_path = 'lib'

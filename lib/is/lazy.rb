@@ -4,7 +4,7 @@ module Is
 
   module Lazy
 
-    VERSION = '0.9.0'
+    VERSION = '0.9.1'
 
     # Object-placeholder for calculation.
     class Value < BasicObject
