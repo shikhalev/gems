@@ -4,6 +4,11 @@ require 'is/monkey/sandbox'
 
 class Module
 
+  # @return [String]
+  def basename
+    name.split('::')[-1]
+  end
+
   # @return [Module]
   def namespace
     begin
