@@ -27,6 +27,7 @@ class Module
     validator = opts[:validator]
     valclass = opts[:class]
     valnull = opts[:null]
+    inh = opts[:inheritance]
     args.each do |a|
       getter = a.intern
       attr_accessor getter
@@ -50,7 +51,7 @@ class Module
           send setter, value
         end
         result = instance_variable_get variable
-        if Class === self && superclass && superclass.respond_to?(getter)
+        if inh && Class === self && superclass && superclass.respond_to?(getter)
           sup = superclass.send getter
           if sup.respond_to? :append
             result = sup.append result
