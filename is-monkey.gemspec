@@ -5,7 +5,7 @@ require './lib/is/monkey'
 Gem::Specification.new do |g|
   g.name = 'is-monkey'
   g.version = Is::Monkey::VERSION
-  g.summary = 'Ths set of monkey-patching'
+  g.summary = 'The set of monkey-patching'
   g.author = 'Ivan Shikhalev'
   g.email = 'shikhalev@gmail.com'
   g.description = g.summary + '.'
