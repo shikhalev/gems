@@ -49,7 +49,14 @@ class Module
           end
           send setter, value
         end
-        instance_variable_get variable
+        result = instance_variable_get variable
+        if Class === self && superclass && superclass.respond_to?(getter)
+          sup = superclass.send getter
+          if sup.respond_to? :append
+            result = sup.append result
+          end
+        end
+        result
       end
 
       if block_given?
