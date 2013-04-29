@@ -1,6 +1,8 @@
 
 # Ruby Gems by Ivan Shikhalev
 
+[![endorse](https://api.coderwall.com/shikhalev/endorsecount.png)](https://coderwall.com/shikhalev)
+
 ## Overview
 
 ### License
