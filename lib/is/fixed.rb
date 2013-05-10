@@ -193,6 +193,22 @@ class Fixed < Numeric
     "#{s[0...-precision]}.#{s[-precision..-1]}"
   end
 
+  def <=> other
+    if precision >= other.precision
+      @number <=> self.class.new(other).number
+    else
+      other.class.new(self).number <=> other.number
+    end
+  end
+
+  def abs
+    self.class.new(@number.abs, precision)
+  end
+
+  def abs2
+    self * self
+  end
+
   protected :precision, :number
 
 end
