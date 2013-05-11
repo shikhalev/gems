@@ -253,6 +253,18 @@ module Is
       v
     end
 
+    # @param [Object] value
+    # @return [Boolean]
+    def === value
+      if @opts[:validator]
+        @opts[:validator] === value
+      elsif @opts[:class]
+        @opts[:class] === value
+      else
+        true
+      end
+    end
+
     module Validators
 
       class OR
