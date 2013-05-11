@@ -247,7 +247,11 @@ module Is
         elsif @opts.has_key? :default
           v = @opts[:default]
         elsif @opts.has_key? :class
-          v = @opts[:class].new
+          begin
+            v = @opts[:class].new
+          rescue
+            v = nil
+          end
         end
       end
       v
