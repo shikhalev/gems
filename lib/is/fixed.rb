@@ -209,6 +209,14 @@ class Fixed < Numeric
     self * self
   end
 
+  def coerce other
+    if Integer === other
+      [self.class.new(other), self]
+    else
+      super other
+    end
+  end
+
   protected :precision, :number
 
 end
