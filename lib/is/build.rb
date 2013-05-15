@@ -8,7 +8,7 @@ module Is
 
   module Build
 
-    VERSION = '0.1.1'
+    VERSION = '0.1.2'
 
   end
 
@@ -33,7 +33,7 @@ class Gem::Specification
       vers = {}
     end
     hash = mkhash
-    vx = version.to_s
+    vx = version.to_s + '.' + prefix
     if vers[vx]
       current = vers[vx]
       if current[:hash] != hash
@@ -49,7 +49,7 @@ class Gem::Specification
     end
     if current[:build] && current[:build] != 0
       p current
-      self.version = vx + '.' + prefix + current[:build].to_s
+      self.version = vx + current[:build].to_s
     end
   end
 
