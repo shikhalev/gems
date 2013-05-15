@@ -8,7 +8,7 @@ module Is
 
   module Build
 
-    VERSION = '0.1.0'
+    VERSION = '0.1.1'
 
   end
 
@@ -24,7 +24,7 @@ class Gem::Specification
     Digest::SHA1.hexdigest s
   end
 
-  def mkbuild
+  def mkbuild prefix = ''
     file = "./.#{name}.vers"
     if File.exists? file
       data = File.read(file)
@@ -48,7 +48,8 @@ class Gem::Specification
       f.puts vers.inspect
     end
     if current[:build] && current[:build] != 0
-      version = vx + '.' + current[:build]
+      p current
+      self.version = vx + '.' + prefix + current[:build].to_s
     end
   end
 
