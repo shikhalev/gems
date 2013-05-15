@@ -48,7 +48,6 @@ class Gem::Specification
       f.puts vers.inspect
     end
     if current[:build] && current[:build] != 0
-      p current
       self.version = vx + current[:build].to_s
     end
   end
