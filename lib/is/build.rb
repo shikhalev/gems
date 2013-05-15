@@ -47,7 +47,7 @@ class Gem::Specification
     File.open file, 'w' do |f|
       f.puts vers.inspect
     end
-    if current[:build] && current[:build] != 0
+    if current[:build] && (current[:build] != 0 || prefix != '')
       self.version = vx + current[:build].to_s
     end
   end
