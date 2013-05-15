@@ -1,5 +1,6 @@
 # encoding: utf-8
 
+require 'is/build'
 require './lib/yard-is-monkey'
 
 Gem::Specification.new do |g|
@@ -13,6 +14,9 @@ Gem::Specification.new do |g|
   g.license = 'GNU LGPL'
 
   g.files = [ 'lib/yard-is-monkey.rb', '.yardopts' ]
+
+  g.mkbuild
+
   g.require_path = 'lib'
   g.required_ruby_version = '>= 1.9.2'
 
