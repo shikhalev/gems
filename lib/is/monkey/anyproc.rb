@@ -12,3 +12,11 @@ class Object
   end
 
 end
+
+class Array
+
+  def call *args
+    map { |item| item.call *args }
+  end
+
+end

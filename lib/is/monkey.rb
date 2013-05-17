@@ -4,7 +4,7 @@ module Is
 
   module Monkey
 
-    VERSION = '0.5.4'
+    VERSION = '0.5.5'
 
   end
 
