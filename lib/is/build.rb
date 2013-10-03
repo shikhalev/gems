@@ -17,7 +17,7 @@ end
 class Gem::Specification
 
   def mkhash
-    s = ''
+    s = File.read @spec
     files.each do |f|
       s += File.read f
     end
@@ -25,6 +25,7 @@ class Gem::Specification
   end
 
   def mkbuild prefix = ''
+    @spec = caller[0].split(':')[0]
     file = "./.#{name}.vers"
     if File.exists? file
       data = File.read(file)
