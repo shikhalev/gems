@@ -3,7 +3,7 @@
 # @yield
 def sandbox &block
   lambda do
-    $SAFE = 4
+    $SAFE = 3
     yield
   end.call
 end

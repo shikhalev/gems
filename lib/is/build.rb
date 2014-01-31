@@ -2,7 +2,6 @@
 
 require 'digest/sha1'
 require 'rubygems'
-require 'is/monkey/sandbox'
 
 module Is
 
@@ -29,7 +28,7 @@ class Gem::Specification
     file = "./.#{name}.vers"
     if File.exists? file
       data = File.read(file)
-      vers = sandbox { eval(data) }
+      vers = eval(data)
     else
       vers = {}
     end
