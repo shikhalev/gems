@@ -2,14 +2,19 @@
 
 class Enum
    
- class << self
+  class << self
        
-   private :new
+    private :new
    
-   def attr name
-     attr_reader name
-   end
-       
- end
+  end
+ 
+  attr_reader :name
+ 
+  def initialize name, props = {}
+    @name = name.intern
+    props.each do |k, v|
+      instance_variable_set "@#{k}".intern, v
+    end
+  end
     
 end
