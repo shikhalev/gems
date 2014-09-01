@@ -13,12 +13,17 @@ class Enum
     
     def each &block
     end
+    
+    def value name, props = {}
+      new name, props
+    end
    
   end
   
   include Comparable
  
   attr_reader :name
+  attr_reader :id
  
   def initialize name, props = {}
     @name = name.intern
@@ -29,6 +34,9 @@ class Enum
     self.class.define_singleton_method @name do
       this
     end
+    @@vals ||= {}
+    @@vals[self.class.name.intern] ||= {}
+    @@vals[self.class.name.intern][@name] = self
   end
     
 end
