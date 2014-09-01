@@ -4,7 +4,11 @@ class Enum
    
  class << self
        
-   private :new    
+   private :new
+   
+   def attr name
+     attr_reader name
+   end
        
  end
     
